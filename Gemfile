@@ -61,3 +61,5 @@ gem 'net-pop'
 
 gem 'jquery-rails'
 gem 'devise'
+
+gem 'acts_as_list', '~> 0.9.19'

@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Dos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Content</th>
+      <th>Goal</th>
+      <th>Position</th>
+      <th>Done</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @dos.each do |do| %>
+      <tr>
+        <td><%= do.content %></td>
+        <td><%= do.goal_id %></td>
+        <td><%= do.position %></td>
+        <td><%= do.done %></td>
+        <td><%= link_to 'Show', do %></td>
+        <td><%= link_to 'Edit', edit_do_path(do) %></td>
+        <td><%= link_to 'Destroy', do, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Do', new_do_path %>

@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @do.content %>
+</p>
+
+<p>
+  <strong>Goal:</strong>
+  <%= @do.goal_id %>
+</p>
+
+<p>
+  <strong>Position:</strong>
+  <%= @do.position %>
+</p>
+
+<p>
+  <strong>Done:</strong>
+  <%= @do.done %>
+</p>
+
+<%= link_to 'Edit', edit_do_path(@do) %> |
+<%= link_to 'Back', dos_path %>

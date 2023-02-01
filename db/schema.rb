@@ -10,7 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_01_081757) do
+ActiveRecord::Schema.define(version: 2023_02_01_091203) do
+
+  create_table "dos", force: :cascade do |t|
+    t.string "content"
+    t.integer "goal_id", null: false
+    t.integer "position"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.boolean "done", default: true, null: false
+    t.index ["goal_id"], name: "index_dos_on_goal_id"
+  end
+
+  create_table "goals", force: :cascade do |t|
+    t.string "title"
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_goals_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -18,10 +36,13 @@ ActiveRecord::Schema.define(version: 2023_02_01_081757) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "dos", "goals"
+  add_foreign_key "goals", "users"
 end
